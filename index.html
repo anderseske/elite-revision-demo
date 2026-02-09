@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite-Revision ApS — Revisor i Bjerringbro</title>
+<meta name="description" content="Elite-Revision ApS er din lokale revisor i Bjerringbro. Vi tilbyder revision, bogføring, skatterådgivning og økonomisk rådgivning til erhverv og private.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy: #0f1f3d;
+  --navy-light: #1a3055;
+  --navy-dark: #0a1528;
+  --gold: #c9a84c;
+  --gold-light: #dfc476;
+  --white: #ffffff;
+  --off-white: #f7f5f0;
+  --warm-gray: #e8e4dc;
+  --text: #2c2c2c;
+  --text-light: #6b6b6b;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'Inter', -apple-system, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); color: var(--text); line-height: 1.6; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(15, 31, 61, 0.95); backdrop-filter: blur(10px);
+  padding: 0 2rem; height: 70px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { font-family: var(--serif); font-size: 1.25rem; color: var(--white); letter-spacing: 0.02em; }
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.8); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; }
+.nav-toggle span { display: block; width: 24px; height: 2px; background: var(--white); margin: 5px 0; transition: 0.3s; }
+
+/* HERO */
+.hero {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%);
+  position: relative; overflow: hidden; padding: 2rem;
+}
+.hero::before {
+  content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero::after {
+  content: ''; position: absolute; bottom: -30%; left: -10%; width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero-content { text-align: center; position: relative; z-index: 1; max-width: 800px; }
+.hero-badge {
+  display: inline-block; padding: 0.5rem 1.5rem; border: 1px solid rgba(201,168,76,0.4);
+  border-radius: 50px; color: var(--gold); font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 2rem;
+}
+.hero h1 {
+  font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4rem); color: var(--white);
+  line-height: 1.15; margin-bottom: 1.5rem;
+}
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero p { color: rgba(255,255,255,0.7); font-size: 1.15rem; max-width: 560px; margin: 0 auto 2.5rem; }
+.hero-cta {
+  display: inline-block; background: var(--gold); color: var(--navy-dark); padding: 1rem 2.5rem;
+  font-weight: 600; font-size: 0.95rem; border-radius: 4px; letter-spacing: 0.03em;
+  transition: background 0.3s, transform 0.2s;
+}
+.hero-cta:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+/* SECTIONS */
+section { padding: 6rem 2rem; }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-label {
+  display: inline-block; color: var(--gold); font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.75rem;
+}
+.section-title { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 2.75rem); margin-bottom: 1.25rem; line-height: 1.2; }
+.section-subtitle { color: var(--text-light); font-size: 1.1rem; max-width: 600px; margin-bottom: 3rem; }
+
+/* OM OS */
+.om-os { background: var(--white); }
+.om-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.om-image {
+  aspect-ratio: 4/3; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;
+}
+.om-image-text { color: rgba(255,255,255,0.15); font-family: var(--serif); font-size: 6rem; }
+.om-stats { display: flex; gap: 2rem; margin-top: 2rem; }
+.om-stat { text-align: center; }
+.om-stat-number { font-family: var(--serif); font-size: 2rem; color: var(--navy); }
+.om-stat-label { font-size: 0.8rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.1em; }
+.om-text p { color: var(--text-light); margin-bottom: 1rem; }
+.om-text p:first-of-type { color: var(--text); font-size: 1.05rem; }
+
+/* YDELSER */
+.ydelser { background: var(--off-white); }
+.ydelser-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+.ydelse-card {
+  background: var(--white); padding: 2.5rem 2rem; border-radius: 8px;
+  border: 1px solid var(--warm-gray); transition: transform 0.3s, box-shadow 0.3s;
+}
+.ydelse-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+.ydelse-icon {
+  width: 48px; height: 48px; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.5rem; font-size: 1.3rem;
+}
+.ydelse-card h3 { font-family: var(--serif); font-size: 1.25rem; margin-bottom: 0.75rem; }
+.ydelse-card p { color: var(--text-light); font-size: 0.9rem; line-height: 1.7; }
+
+/* HVORFOR */
+.hvorfor { background: var(--navy); color: var(--white); }
+.hvorfor .section-title { color: var(--white); }
+.hvorfor .section-subtitle { color: rgba(255,255,255,0.6); }
+.hvorfor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.hvorfor-item { padding: 2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; transition: border-color 0.3s; }
+.hvorfor-item:hover { border-color: var(--gold); }
+.hvorfor-item .num { font-family: var(--serif); font-size: 2.5rem; color: var(--gold); opacity: 0.6; margin-bottom: 1rem; }
+.hvorfor-item h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; }
+.hvorfor-item p { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+
+/* KONTAKT */
+.kontakt { background: var(--white); }
+.kontakt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+.kontakt-info h3 { font-family: var(--serif); font-size: 1.5rem; margin-bottom: 1.5rem; }
+.kontakt-detail { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: flex-start; }
+.kontakt-detail .icon {
+  width: 40px; height: 40px; min-width: 40px; background: var(--off-white); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; font-size: 1rem;
+}
+.kontakt-detail .label { font-size: 0.8rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem; }
+.kontakt-detail .value { font-weight: 500; }
+.kontakt-detail .value a { color: var(--navy); transition: color 0.2s; }
+.kontakt-detail .value a:hover { color: var(--gold); }
+.kontakt-map {
+  background: var(--off-white); border-radius: 8px; overflow: hidden;
+  aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+}
+.kontakt-map iframe { width: 100%; height: 100%; border: 0; }
+.kontakt-hours { margin-top: 2rem; padding: 1.5rem; background: var(--off-white); border-radius: 8px; }
+.kontakt-hours h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; color: var(--navy); }
+.kontakt-hours p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.25rem; }
+
+/* FOOTER */
+footer {
+  background: var(--navy-dark); color: rgba(255,255,255,0.5); padding: 3rem 2rem;
+  text-align: center; font-size: 0.85rem;
+}
+footer .footer-logo { font-family: var(--serif); font-size: 1.1rem; color: var(--white); margin-bottom: 0.5rem; }
+footer .footer-logo span { color: var(--gold); }
+footer p { margin-bottom: 0.25rem; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .ydelser-grid { grid-template-columns: repeat(2, 1fr); }
+  .hvorfor-grid { grid-template-columns: 1fr; }
+  .om-grid, .kontakt-grid { grid-template-columns: 1fr; }
+  .om-image { max-height: 300px; }
+}
+@media (max-width: 640px) {
+  .nav-links { display: none; position: absolute; top: 70px; left: 0; right: 0; background: var(--navy); flex-direction: column; padding: 1.5rem 2rem; gap: 1rem; }
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: block; }
+  .ydelser-grid { grid-template-columns: 1fr; }
+  section { padding: 4rem 1.5rem; }
+  .om-stats { flex-direction: column; gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Elite<span>-</span>Revision</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#om">Om os</a></li>
+    <li><a href="#ydelser">Ydelser</a></li>
+    <li><a href="#hvorfor">Hvorfor os</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Registreret revisor siden 2000</div>
+    <h1>Din økonomi fortjener <em>elite</em>-behandling</h1>
+    <p>I over 25 år har vi hjulpet virksomheder og private i Bjerringbro med revision, regnskab og rådgivning — med den personlige service kun en lokal revisor kan give.</p>
+    <a href="#kontakt" class="hero-cta">Book en uforpligtende snak</a>
+  </div>
+</section>
+
+<!-- OM OS -->
+<section class="om-os" id="om">
+  <div class="container">
+    <div class="om-grid">
+      <div class="om-image">
+        <span class="om-image-text">ER</span>
+      </div>
+      <div class="om-text">
+        <span class="section-label">Om os</span>
+        <h2 class="section-title">Lokalt forankret, fagligt funderet</h2>
+        <p>Elite-Revision ApS blev stiftet i 2000 af registreret revisor Carsten Smed Mikkelsen. Fra kontoret på Torvegade i hjertet af Bjerringbro har vi i over to årtier leveret professionel revision og økonomisk rådgivning.</p>
+        <p>Vi tror på, at god rådgivning starter med et personligt kendskab til kunden. Derfor prioriterer vi nærhed, tilgængelighed og en tæt dialog — så du altid føler dig tryg ved din økonomi.</p>
+        <p>Med et dedikeret team på tre medarbejdere kombinerer vi den store faglighed med den lille virksomheds fleksibilitet og personlige tilgang.</p>
+        <div class="om-stats">
+          <div class="om-stat">
+            <div class="om-stat-number">25+</div>
+            <div class="om-stat-label">Års erfaring</div>
+          </div>
+          <div class="om-stat">
+            <div class="om-stat-number">3</div>
+            <div class="om-stat-label">Dedikerede medarbejdere</div>
+          </div>
+          <div class="om-stat">
+            <div class="om-stat-number">100%</div>
+            <div class="om-stat-label">Personlig service</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- YDELSER -->
+<section class="ydelser" id="ydelser">
+  <div class="container">
+    <span class="section-label">Ydelser</span>
+    <h2 class="section-title">Alt hvad din virksomhed har brug for</h2>
+    <p class="section-subtitle">Vi dækker hele spektret af økonomiske ydelser — fra den daglige bogføring til strategisk rådgivning.</p>
+    <div class="ydelser-grid">
+      <div class="ydelse-card">
+        <div class="ydelse-icon">📋</div>
+        <h3>Revision</h3>
+        <p>Lovpligtig og frivillig revision af årsregnskaber. Vi sikrer, at dit regnskab er korrekt, troværdigt og lever op til gældende standarder.</p>
+      </div>
+      <div class="ydelse-card">
+        <div class="ydelse-icon">📊</div>
+        <h3>Bogføring</h3>
+        <p>Professionel bogføring og regnskabsassistance, så du kan fokusere på det, du er bedst til — at drive din virksomhed.</p>
+      </div>
+      <div class="ydelse-card">
+        <div class="ydelse-icon">💡</div>
+        <h3>Rådgivning</h3>
+        <p>Økonomisk sparring og rådgivning om alt fra virksomhedsstruktur til vækststrategier. Vi er din betroede sparringspartner.</p>
+      </div>
+      <div class="ydelse-card">
+        <div class="ydelse-icon">🏛️</div>
+        <h3>Skat</h3>
+        <p>Skatterådgivning og selvangivelser for erhverv og private. Vi optimerer din skattesituation inden for lovens rammer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HVORFOR OS -->
+<section class="hvorfor" id="hvorfor">
+  <div class="container">
+    <span class="section-label">Hvorfor vælge os</span>
+    <h2 class="section-title">Mere end bare tal</h2>
+    <p class="section-subtitle">Vi er ikke bare revisorer — vi er din økonomiske samarbejdspartner.</p>
+    <div class="hvorfor-grid">
+      <div class="hvorfor-item">
+        <div class="num">01</div>
+        <h3>Personlig kontakt</h3>
+        <p>Hos os får du en fast kontaktperson, der kender din virksomhed. Ingen omstilling, ingen gentagelser — bare direkte dialog.</p>
+      </div>
+      <div class="hvorfor-item">
+        <div class="num">02</div>
+        <h3>Lokal forankring</h3>
+        <p>Vi har siddet i Bjerringbro i over 25 år. Vi kender det lokale erhvervsliv og forstår de udfordringer, du møder.</p>
+      </div>
+      <div class="hvorfor-item">
+        <div class="num">03</div>
+        <h3>Bred faglighed</h3>
+        <p>Fra revision og bogføring til skat og strategi. Vi samler alle dine økonomiske behov under ét tag — det sparer dig tid og penge.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="kontakt" id="kontakt">
+  <div class="container">
+    <span class="section-label">Kontakt</span>
+    <h2 class="section-title">Lad os tage en snak</h2>
+    <p class="section-subtitle">Ring, skriv eller kig forbi — vi sidder klar på Torvegade i Bjerringbro.</p>
+    <div class="kontakt-grid">
+      <div class="kontakt-info">
+        <h3>Elite-Revision ApS</h3>
+        <div class="kontakt-detail">
+          <div class="icon">📍</div>
+          <div><div class="label">Adresse</div><div class="value">Torvegade 13, 8850 Bjerringbro</div></div>
+        </div>
+        <div class="kontakt-detail">
+          <div class="icon">📞</div>
+          <div><div class="label">Telefon</div><div class="value"><a href="tel:+4586680400">86 68 04 00</a></div></div>
+        </div>
+        <div class="kontakt-detail">
+          <div class="icon">✉️</div>
+          <div><div class="label">Email</div><div class="value"><a href="mailto:carsten@elite-revision.dk">carsten@elite-revision.dk</a></div></div>
+        </div>
+        <div class="kontakt-detail">
+          <div class="icon">🏢</div>
+          <div><div class="label">CVR</div><div class="value">25 47 73 67</div></div>
+        </div>
+        <div class="kontakt-hours">
+          <h4>Åbningstider</h4>
+          <p>Mandag – torsdag: 9:00 – 16:00</p>
+          <p>Fredag: 9:00 – 14:00</p>
+          <p>Aftale ud over åbningstid kan arrangeres.</p>
+        </div>
+      </div>
+      <div class="kontakt-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2207.5!2d9.7185!3d56.3774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464c8a0e0e0e0e0e%3A0x0!2sTorvegade+13%2C+8850+Bjerringbro!5e0!3m2!1sda!2sdk!4v1700000000000!5m2!1sda!2sdk" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Elite<span>-</span>Revision ApS</div>
+  <p>Torvegade 13, 8850 Bjerringbro — CVR: 25 47 73 67</p>
+  <p style="margin-top: 1rem;">© 2025 Elite-Revision ApS. Alle rettigheder forbeholdes.</p>
+</footer>
+
+</body>
+</html>
